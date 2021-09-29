@@ -10,5 +10,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Method to send messages via Anexia SMS Gateway.
 
-[Unreleased]: https://github.com/anexia-it/python-deepcompare/compare/1.0.0...HEAD
-[1.0.0]: https://github.com/anexia-it/python-deepcompare/releases/tag/1.0.0
+[Unreleased]: https://github.com/anexia-it/django-anexia-sms-gateway/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/anexia-it/django-anexia-sms-gateway/releases/tag/1.0.0
