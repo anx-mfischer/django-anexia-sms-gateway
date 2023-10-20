@@ -8,7 +8,7 @@ It requires an active [Anexia Engine](https://www.anexia-engine.com/) subscripti
 Install using pip:
 
 ```
-pip install git+https://github.com/anexia-it/django-anexia-sms-gateway@main
+pip install django-anexia-sms-gateway
 ```
 
 In the project's settings.py add the access token configuration:
@@ -23,6 +23,8 @@ ASGW_API_TOKEN = "your-asgw-api-token"
 
 Call the `send_sms` method wherever you want to trigger a short message:
 ```
+from django_anexia_sms_gateway.sms import send_sms
+
 send_sms(message="SMS content", destination="+43123456789")
 ```
 
@@ -31,6 +33,7 @@ send_sms(message="SMS content", destination="+43123456789")
 If you provide a translatable message string be sure to use `ugettext` ("gettext_lazy" would not be triggered on time):
 ```
 from django.utils.translation import ugettext
+from django_anexia_sms_gateway.sms import send_sms
 
 send_sms(message=ugettext("Translatable SMS content"), destination="+43123456789")
 ```
