@@ -3,7 +3,7 @@ import logging
 from django.conf import settings
 from requests import request
 
-logger = logging.getLogger("anexia_sms_gateway")
+logger = logging.getLogger("django_anexia_sms_gateway")
 
 
 def send_sms(message: str, destination: str):
@@ -12,15 +12,26 @@ def send_sms(message: str, destination: str):
     """
     asgw_active = getattr(settings, "ASGW_ACTIVE", False)
     encoding = getattr(settings, "ASGW_ENCODING", "GSM")
-    url = getattr(settings, "ASGW_SINGLE_MESSAGE_URL", "https://engine.anexia-it.com/api/sms/v1/message.json")
+    url = getattr(
+        settings,
+        "ASGW_SINGLE_MESSAGE_URL",
+        "https://engine.anexia-it.com/api/sms/v1/message.json",
+    )
     token = getattr(settings, "ASGW_API_TOKEN", "")
 
     if asgw_active:
         request_params = {
             "method": "POST",
             "url": url,
-            "headers": {"Authorization": f"Token {token}", "Content-Type": "application/json"},
-            "json": {"destination": destination, "message": message, "encoding": encoding},
+            "headers": {
+                "Authorization": f"Token {token}",
+                "Content-Type": "application/json",
+            },
+            "json": {
+                "destination": destination,
+                "message": message,
+                "encoding": encoding,
+            },
         }
 
         logger.info(f"Send {encoding} encoded SMS to {destination}: {message}")

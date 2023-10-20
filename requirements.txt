@@ -1,0 +1,2 @@
+# Linters and formatters
+pre-commit>=3.2.2,<3.3
