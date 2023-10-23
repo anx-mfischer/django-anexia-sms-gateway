@@ -1,7 +1,13 @@
 # Django Anexia SMS Gateway
 
-A django module to send short messages via the [Anexia SMS gateway (ASGW)](https://www.anexia-engine.com/de/modul/sms-plattform-und-gateway).
-It requires an active [Anexia Engine](https://www.anexia-engine.com/) subscription and a "ready to use" configured "sender" within [your web service](https://engine.anexia-it.com/sms/senders).
+[![PyPI](https://badge.fury.io/py/django-anexia-sms-gateway.svg)](https://pypi.org/project/django-anexia-sms-gateway/)
+[![Test Status](https://github.com/anexia/django-anexia-sms-gateway/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/anexia/django-anexia-sms-gateway/actions/workflows/test.yml)
+[![Codecov](https://codecov.io/gh/anexia/django-anexia-sms-gateway/branch/main/graph/badge.svg)](https://codecov.io/gh/anexia/django-anexia-sms-gateway)
+
+A django module to send short messages via
+the [Anexia SMS gateway (ASGW)](https://www.anexia-engine.com/de/modul/sms-plattform-und-gateway).
+It requires an active [Anexia Engine](https://www.anexia-engine.com/) subscription and a "ready to use" configured "
+sender" within [your web service](https://engine.anexia-it.com/sms/senders).
 
 ## Installation
 
@@ -22,6 +28,7 @@ ASGW_API_TOKEN = "your-asgw-api-token"
 ## Usage
 
 Call the `send_sms` method wherever you want to trigger a short message:
+
 ```
 from django_anexia_sms_gateway.sms import send_sms
 
@@ -31,6 +38,7 @@ send_sms(message="SMS content", destination="+43123456789")
 ### Translation (message)
 
 If you provide a translatable message string be sure to use `ugettext` ("gettext_lazy" would not be triggered on time):
+
 ```
 from django.utils.translation import ugettext
 from django_anexia_sms_gateway.sms import send_sms
@@ -40,9 +48,11 @@ send_sms(message=ugettext("Translatable SMS content"), destination="+43123456789
 
 ### Recipient phone number (destination)
 
-The recipient's phone number (=`destination`) must consist of prefix `+` followed by 1 to 14 digits. Otherwise the ASGW API will return an error.
+The recipient's phone number (=`destination`) must consist of prefix `+` followed by 1 to 14 digits. Otherwise the ASGW
+API will return an error.
 
 #### Phone number on model
+
 In case you store the phone number on a model (e.g. `User`), we recommend direct validation via `RegexValidator`, e.g.:
 
 ```
